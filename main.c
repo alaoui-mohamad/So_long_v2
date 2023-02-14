@@ -11,6 +11,7 @@ typedef struct l_st
 {
 	void			*mlx;
 	void			*win;
+
 	void			*img;
 	int				coins;
 	int				x;
@@ -32,15 +33,7 @@ typedef struct l_st
 #include "get_next_line/get_next_line_bonus.h"
 
 
-size_t	ft_strlen(const char *s)
-{
-	int	i;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
@@ -91,25 +84,40 @@ int read_file(char *path)
 	
 	return (fd);
 }
-
+int ft_hieght(int fd)
+{
+	int height;
+	height = 0;
+	while (get_next_line(fd))
+	{
+		height++;
+	}
+	return (height);
+}
 char	**read_map(int ac , char **av)
 {
-	int i;
-	static char *line;
-	
-	int  fd;
-	fd = read_file(av[1]);
+	t_st b;
 
-	char *str = get_next_line(fd);
-	while (line)
+	static char **line;
+	int  fd;
+
+	b.i = 0;
+	fd = read_file(av[1]);
+	b.height = ft_hieght(fd);
+	fd = read_file(av[1]);
+	printf("%d\n", b.height);
+	line = (char **)malloc(sizeof(char *) * (b.height + 1));
+	// line = get_next_line(fd);
+	while (b.i < b.height)
 	{
-		if (ft_strchr(line, '\n') && ft_linelen(line) == 1)
+		if (ft_strchr(line[b.i], '\n') && ft_strlen(line[b.i]) == 1)
 		{
 			printf("new line found");
 			exit(0);
 		}
-		free(line);
-		line = get_next_line(fd);
+		line[b.i] = get_next_line(fd);
+		printf("%s", line[b.i]);
+		b.i++;
 	}
 	return (line);
 }
@@ -117,7 +125,6 @@ char	**read_map(int ac , char **av)
 int main(int ac, char **av)
 {
 	t_st *b;
-	
-	printf ("%s", read_map(ac, av));
-
+	char **map;
+	read_map(ac, av);
 }
