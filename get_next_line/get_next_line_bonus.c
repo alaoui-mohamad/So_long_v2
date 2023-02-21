@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hello <hello@student.42.fr>                +#+  +:+       +#+        */
+/*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:53:31 by m-alaoui          #+#    #+#             */
-/*   Updated: 2022/11/04 17:05:21 by hello            ###   ########.fr       */
+/*   Updated: 2023/02/21 02:31:40 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_ret_line(ret[fd]);
 	ret[fd] = ft_check_next(ret[fd]);
+
 	return (line);
 }
