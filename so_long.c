@@ -36,7 +36,7 @@ void check_map(char **line)
 	check_wall_map(line);
 	check_map_rectangular(line);
 }
-int parser_map(int ac, char **av)
+char **parser_map(int ac, char **av)
 {
 	t_st b;
 	int len;
@@ -51,8 +51,6 @@ int parser_map(int ac, char **av)
 	len = ft_strlen(b.arr[0]);
 	b.line = check_path_valid(b.line, player_position(b.arr), len);
 	printf("%s\n", b.line);
-	if(check_path(b.line))
-		printf("OK");
-	else
-		printf("Error map not valid");
+	check_path(b.line);
+	return (b.arr);
 }
