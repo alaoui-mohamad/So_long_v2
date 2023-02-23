@@ -23,7 +23,7 @@ int check_allowed_char(char *line)
 	int n;
 
 	i = 0;
-	n = strlen(line);
+	n = ft_strlen(line);
 	while (i < n)
 	{
 		if (line[i] != '1' && line[i] != '0' && line[i] != 'C' && line[i] != 'E' && line[i] != 'P')

@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
+#include <stdio.h>
 #include "get_next_line/get_next_line_bonus.h"
 
 typedef struct l_st
@@ -31,11 +32,12 @@ typedef struct l_st
 } t_st;
 
 // read map
+size_t	ft_strlen(const char *s);
 int ft_hieght(char **av);
 char *ft_strrchr(const char *s, int c);
 void ft_putstr_fd(char *s, int fd);
 int read_file(char *path);
-char **read_map(int ac, char **av);
+char **read_map(char **av);
 int ft_count_colums(char **line);
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 int check_map_rectangular(char **line);
@@ -54,5 +56,6 @@ void delete_backslash(char *line);
 int check_map_equal(char **line);
 int check_map_valid(char **line);
 void check_heads(char *line);
+char	*get_next_line(int fd);
 
 #endif

@@ -1,32 +1,31 @@
 CC=CC
-FLAGS= -I include/push_swap.h
+FLAGS= -I so_long.h
 AR=ar cr
 RM=rm -rf
-FILES=  src/instructions/pp_function src/instructions/rr_function src/instructions/rrr_function \
-		src/instructions/ss_function src/parsing_function/ft_split src/parsing_function/need_function \
-		src/parsing_function/libft_import src/parsing_function/libft_import2 \
-		src/sorting/need_function src/sorting/push_function src/sorting/hard_sort push_swap
+FILES=  get_next_line/get_next_line_bonus \
+		get_next_line/get_next_line_utils_bonus \
+		parser/valid_map \
+		parser/map_valid \
+		parser/valid_path \
+		read_map/read_map_for_parser \
+		so_long \
+
 		
-BFILES  = src/instructions/pp_function src/instructions/rr_function src/instructions/rrr_function \
-		src/instructions/ss_function src/parsing_function/ft_split src/parsing_function/need_function \
-		src/parsing_function/libft_import src/parsing_function/libft_import2 \
-		src/sorting/need_function src/sorting/push_function src/sorting/hard_sort \
-		src/get_next_line/get_next_line_bonus src/get_next_line/get_next_line_utils_bonus \
-		checker
+
 
 OBJ=$(FILES:=.o)
-BOBJ=$(BFILES:=.o)
-NAME=push_swap
+# BOBJ=$(BFILES:=.o)
+NAME=so_long
 
 .PHONY: all bonus clean fclean re
 
 all: $(NAME)
 
-bonus: $(BOBJ)
-	$(CC) $(BOBJ) -o checker
+# bonus: $(BOBJ)
+# 	$(CC) $(BOBJ) -o checker
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o push_swap
+	$(CC) $(OBJ) -o so_long
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
