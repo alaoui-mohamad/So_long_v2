@@ -51,12 +51,35 @@ char **parser_map(int ac, char **av)
 	check_path(b.line);
 	return (b.arr);
 }
+int count_collectibles(char **map)
+{
+	int i;
+	int j;
+	int count;
+
+	i = 0;
+	j = 0;
+	count = 0;
+	while (map[i])
+	{
+		while (map[i][j])
+		{
+			if (map[i][j] == 'C')
+				count++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (count);
+}
 int main(int argc, char const *argv[])
 {
 	char **map;
-
+	int count_c;
 	map = parser_map(argc, (char **)argv);
-	draw_map(map);
+	count_c = count_collectibles(map);
+	draw_map(map, count_c);
 	return 0;
 }
 

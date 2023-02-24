@@ -5,13 +5,21 @@ void move_player(t_st *b, int x, int y)
 {
     int i = 0;
     int j = 0;
-    printf("x = %d, y = %d \n", x, y);
     while (b->arr[i])
     {
         while (b->arr[i][j])
         {
             if (b->arr[i][j] == 'P')
             {
+                if (b->arr[i + y][j + x] == 'E' && b->coins == 0)
+                {
+                    ft_putstr_fd("You win!", 1);
+                    exit(0);
+                }
+                if (b->arr[i + y][j + x] == '1' || b->arr[i + y][j + x] == 'E')
+                    return;
+                if (b->arr[i + y][j + x] == 'C')
+                    b->coins--;
                 b->arr[i][j] = '0';
                 b->arr[i + y][j + x] = 'P';
                 return;
@@ -24,14 +32,15 @@ void move_player(t_st *b, int x, int y)
 }
 int read_key(int keycode, t_st *b)
 {
-    printf("b->arr[i] = %s \n", b->arr[0]);
+    int i = 0;
+
     if (keycode == 53)
         exit(0);
     if (keycode == 0)
         move_player(b, -1, 0);
-    if (keycode == 2)
-        move_player(b, 0, -1);
     if (keycode == 13)
+        move_player(b, 0, -1);
+    if (keycode == 2)
         move_player(b, 1, 0);
     if (keycode == 1)
         move_player(b, 0, 1);
@@ -63,6 +72,7 @@ void drow_player_exit(t_st *b)
 
 void draw_files(t_st *b)
 {
+    b->i = 0;
     while (b->i < b->y)
     {
         b->j = 0;
@@ -83,20 +93,19 @@ void draw_files(t_st *b)
         b->i++;
     }
 }
-int draw_map(char **map)
+int draw_map(char **map, int coins)
 {
     t_st b;
 
     b.arr = map;
+    b.coins = coins;
     b.mlx = mlx_init();
     b.y = ft_count_colums(map);
     b.x = ft_strlen(map[0]);
-    printf("x = %d, y = %d \n", b.x, b.y);
     b.win = mlx_new_window(b.mlx, b.x * SQUARE_SIZE, b.y * SQUARE_SIZE, "My Map");
-    b.i = 0;
     read_files(&b);
     draw_files(&b);
-    mlx_hook(b.win, 2 , 0, read_key, &b);
+    mlx_hook(b.win, 2, 0, read_key, &b);
     mlx_loop(b.mlx);
 
     return 0;

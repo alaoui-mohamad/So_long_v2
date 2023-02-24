@@ -64,6 +64,10 @@ int check_map_valid(char **line);
 void check_heads(char *line);
 char *get_next_line(int fd);
 // draw map
-int draw_map(char **map);
-
+int read_key(int keycode, t_st *b);
+void read_files(t_st *b);
+int draw_map(char **map, int coins);
+void move_player(t_st *b, int x, int y);
+void drow_player_exit(t_st *b);
+void draw_files(t_st *b);
 #endif
