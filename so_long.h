@@ -57,7 +57,7 @@ char    *check_path_valid(char *line, int position, int n);
 int     check_path(char *line);
 char    *double_pointer_to_char(char **line);
 int     player_position(char **line);
-
+int	    destory(t_st *b);
 // check map if is valid
 int     check_allowed_char(char *line);
 void    delete_backslash(char *line);
@@ -78,7 +78,6 @@ int     count_collec(char **map);
 void    print_error(t_st *b,char *str);
 void    print_simple_error(char *str);
 void    free_window(t_st *b);
-void    free_lines(char *line);
 void    free_map(char **map);
 void    prinf_message(char *str);
 void    ft_putnbr_fd(int nb, int fd);

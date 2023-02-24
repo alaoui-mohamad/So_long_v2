@@ -2,24 +2,18 @@
 #include "so_long.h"
 
 
-int	destory(t_st *b)
-{
-	print_error(b, "Error : window closed \n");
-	exit(0);
-	return (0);
-}
 
-int	draw_map(char **map, int coins)
+int draw_map(char **map, int coins)
 {
-	t_st	b;
+	t_st b;
 
 	b.count_m = 0;
-    b.arr = map;
-    b.coins = coins;
-    b.mlx = mlx_init();
-    b.y = ft_count_colums(map);
-    b.x = ft_strlen(map[0]);
-    b.win = mlx_new_window(b.mlx, b.x * SQUARE, b.y * SQUARE, "So Long");
+	b.arr = map;
+	b.coins = coins;
+	b.mlx = mlx_init();
+	b.y = ft_count_colums(map);
+	b.x = ft_strlen(map[0]);
+	b.win = mlx_new_window(b.mlx, b.x * SQUARE, b.y * SQUARE, "So Long");
 	read_files(&b);
 	draw_files(&b);
 	mlx_hook(b.win, 2, 0, read_key, &b);
@@ -30,17 +24,19 @@ int	draw_map(char **map, int coins)
 	return (0);
 }
 
-char	*double_pointer_to_char(char **line)
+char *double_pointer_to_char(char **line)
 {
-	int		i;
-	int		j;
-	int		n;
-	char 	*str;
+	int i;
+	int j;
+	int n;
+	char *str;
 
 	i = 0;
 	j = 0;
 	n = ft_strlen(line[0]);
 	str = (char *)malloc(sizeof(char) * (n * ft_count_colums(line) + 1));
+	if (!str)
+		free(str);
 	while (line[i])
 	{
 		while (line[i][j])
@@ -55,7 +51,7 @@ char	*double_pointer_to_char(char **line)
 	return (str);
 }
 
-void	check_map(t_st *b)
+void check_map(t_st *b)
 {
 	b->width = ft_strlen(b->arr[0]);
 	check_map_valid(b->arr);
@@ -64,14 +60,11 @@ void	check_map(t_st *b)
 	check_map_rectangular(b->arr);
 	check_e_isblocked(b->line, b->width);
 }
-void fun()
+
+char **parser_map(int ac, char **av)
 {
-	system("leaks so_long");
-}
-char	**parser_map(int ac, char **av)
-{
-	t_st	b;
-	int		len;
+	t_st b;
+	int len;
 
 	if (ac != 2)
 		print_simple_error("Error : Wrong number of arguments \n");
@@ -87,12 +80,10 @@ char	**parser_map(int ac, char **av)
 int	main(int argc, char **argv)
 {
 	char	**map;
-	int		count_c;
+	int 	count_c;
 
-	map = parser_map(argc , argv);
+	map = parser_map(argc, argv);
 	count_c = count_collec(map);
 	draw_map(map, count_c);
-	atexit(fun);
 	return (0);
 }
-

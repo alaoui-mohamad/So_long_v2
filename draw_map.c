@@ -1,127 +1,130 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/24 23:39:00 by m-alaoui          #+#    #+#             */
+/*   Updated: 2023/02/25 00:02:19 by m-alaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void ft_putchar_fd(char c, int fd)
+void	complet_move_player(t_st *b, int x, int y)
 {
-    write(fd, &c, 1);
+	if (b->arr[b->i + y][b->j + x] == 'E' && b->coins == 0)
+	{
+		ft_putstr_fd("You win!", 1);
+		exit(0);
+	}
+	if (b->arr[b->i + y][b->j + x] == '1' || b->arr[b->i + y][b->j + x] == 'E')
+		return ;
+	if (b->arr[b->i + y][b->j + x] == 'C')
+		b->coins--;
+	b->arr[b->i][b->j] = '0';
+	b->arr[b->i + y][b->j + x] = 'P';
+	b->count_m++;
+	ft_putstr_fd("Moves: ", 1);
+	ft_putnbr_fd(b->count_m, 1);
+	write(1, "\n", 1);
+	return ;
 }
 
-void ft_putnbr_fd(int nb, int fd)
+void	move_player(t_st *b, int x, int y)
 {
-    size_t n;
-
-    n = nb;
-    if (nb < 0)
-    {
-        ft_putchar_fd('-', fd);
-        n *= -1;
-    }
-    if (n < 10)
-        ft_putchar_fd(n + 48, fd);
-    else
-    {
-        ft_putnbr_fd(n / 10, fd);
-        ft_putnbr_fd(n % 10, fd);
-    }
+	b->i = 0;
+	b->j = 0;
+	while (b->arr[b->i])
+	{
+		while (b->arr[b->i][b->j])
+		{
+			if (b->arr[b->i][b->j] == 'P')
+			{
+				complet_move_player(b, x, y);
+				return ;
+			}
+			b->j++;
+		}
+		b->j = 0;
+		b->i++;
+	}
 }
 
-void complet_move_player(t_st *b, int x, int y)
+int	read_key(int keycode, t_st *b)
 {
-    if (b->arr[b->i + y][b->j + x] == 'E' && b->coins == 0)
-    {
-        ft_putstr_fd("You win!", 1);
-        exit(0);
-    }
-    if (b->arr[b->i + y][b->j + x] == '1' || b->arr[b->i + y][b->j + x] == 'E')
-        return;
-    if (b->arr[b->i + y][b->j + x] == 'C')
-        b->coins--;
-    b->arr[b->i][b->j] = '0';
-    b->arr[b->i + y][b->j + x] = 'P';
-    b->count_m++;
-    ft_putstr_fd("Moves: ", 1);
-    ft_putnbr_fd(b->count_m, 1);
-    write(1, "\n", 1);
-    return;
-}
-void move_player(t_st *b, int x, int y)
-{
-    b->i = 0;
-    b->j = 0;
-    while (b->arr[b->i])
-    {
-        while (b->arr[b->i][b->j])
-        {
-            if (b->arr[b->i][b->j] == 'P')
-            {
-                complet_move_player(b, x, y);
-                return;
-            }
-            b->j++;
-        }
-        b->j = 0;
-        b->i++;
-    }
-}
-int read_key(int keycode, t_st *b)
-{
-    int i = 0;
-
-    if (keycode == 53)
-        exit(0);
-    if (keycode == 0)
-        move_player(b, -1, 0);
-    if (keycode == 13)
-        move_player(b, 0, -1);
-    if (keycode == 2)
-        move_player(b, 1, 0);
-    if (keycode == 1)
-        move_player(b, 0, 1);
-    mlx_clear_window(b->mlx, b->win);
-    draw_files(b);
-    return (0);
-}
-void read_files(t_st *b)
-{
-    b->exit = mlx_xpm_file_to_image(b->mlx, "assets/exit.xpm", &b->width, &b->height);
-    b->empty = mlx_xpm_file_to_image(b->mlx, "assets/empty.xpm", &b->width, &b->height);
-    b->col = mlx_xpm_file_to_image(b->mlx, "assets/col.xpm", &b->width, &b->height);
-    b->wall = mlx_xpm_file_to_image(b->mlx, "assets/wall.xpm", &b->width, &b->height);
-    b->player = mlx_xpm_file_to_image(b->mlx, "assets/player.xpm", &b->width, &b->height);
-}
-void drow_player_exit(t_st *b)
-{
-    if (b->arr[b->i][b->j] == 'E')
-    {
-        mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, SQUARE * b->i);
-        mlx_put_image_to_window(b->mlx, b->win, b->exit, SQUARE * b->j, SQUARE * b->i);
-    }
-    if (b->arr[b->i][b->j] == 'P')
-    {
-        mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, SQUARE * b->i);
-        mlx_put_image_to_window(b->mlx, b->win, b->player, SQUARE * b->j, SQUARE * b->i);
-    }
+	if (keycode == 53)
+		exit(0);
+	if (keycode == 0)
+		move_player(b, -1, 0);
+	if (keycode == 13)
+		move_player(b, 0, -1);
+	if (keycode == 2)
+		move_player(b, 1, 0);
+	if (keycode == 1)
+		move_player(b, 0, 1);
+	mlx_clear_window(b->mlx, b->win);
+	draw_files(b);
+	return (0);
 }
 
-void draw_files(t_st *b)
+void	read_files(t_st *b)
 {
-    b->i = 0;
-    while (b->i < b->y)
-    {
-        b->j = 0;
-        while (b->j < b->x)
-        {
-            if (b->arr[b->i][b->j] == '1')
-                mlx_put_image_to_window(b->mlx, b->win, b->wall, SQUARE * b->j, SQUARE * b->i);
-            if (b->arr[b->i][b->j] == '0')
-                mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, SQUARE * b->i);
-            if (b->arr[b->i][b->j] == 'C')
-            {
-                mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, SQUARE * b->i);
-                mlx_put_image_to_window(b->mlx, b->win, b->col, SQUARE * b->j + SQUARE / 4, SQUARE * b->i + SQUARE / 4);
-            }
-            drow_player_exit(b);
-            b->j++;
-        }
-        b->i++;
-    }
+	b->exit = mlx_xpm_file_to_image(b->mlx, "assets/exit.xpm", \
+									&b->width, &b->height);
+	b->empty = mlx_xpm_file_to_image(b->mlx, "assets/empty.xpm", &b->width, \
+									&b->height);
+	b->col = mlx_xpm_file_to_image(b->mlx, "assets/col.xpm", &b->width, \
+									&b->height);
+	b->wall = mlx_xpm_file_to_image(b->mlx, "assets/wall.xpm", &b->width, \
+									&b->height);
+	b->player = mlx_xpm_file_to_image(b->mlx, "assets/player.xpm", &b->width, \
+									&b->height);
+}
+
+void	drow_player_exit(t_st *b)
+{
+	if (b->arr[b->i][b->j] == 'E')
+	{
+		mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, \
+								SQUARE * b->i);
+		mlx_put_image_to_window(b->mlx, b->win, b->exit, SQUARE * b->j, \
+								SQUARE * b->i);
+	}
+	if (b->arr[b->i][b->j] == 'P')
+	{
+		mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, \
+								SQUARE * b->i);
+		mlx_put_image_to_window(b->mlx, b->win, b->player, SQUARE * b->j, \
+								SQUARE * b->i);
+	}
+}
+
+void	draw_files(t_st *b)
+{
+	b->i = 0;
+	while (b->i < b->y)
+	{
+		b->j = 0;
+		while (b->j < b->x)
+		{
+			if (b->arr[b->i][b->j] == '1')
+				mlx_put_image_to_window(b->mlx, b->win, b->wall, SQUARE * b->j, \
+										SQUARE * b->i);
+			if (b->arr[b->i][b->j] == '0')
+				mlx_put_image_to_window(b->mlx, b->win, b->empty, \
+										SQUARE * b->j, SQUARE * b->i);
+			if (b->arr[b->i][b->j] == 'C')
+			{
+				mlx_put_image_to_window(b->mlx, b->win, b->empty,
+					SQUARE * b->j, SQUARE * b->i);
+				mlx_put_image_to_window(b->mlx, b->win, b->col, 
+					SQUARE * b->j + SQUARE / 4, SQUARE * b->i + SQUARE / 4);
+			}
+			drow_player_exit(b);
+			b->j++;
+		}
+		b->i++;
+	}
 }
