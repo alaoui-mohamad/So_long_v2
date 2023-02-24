@@ -8,6 +8,7 @@ FILES=  get_next_line/get_next_line_bonus \
 		parser/map_valid \
 		parser/valid_path \
 		read_map/read_map_for_parser \
+		draw_map \
 		so_long \
 
 		
@@ -25,7 +26,7 @@ all: $(NAME)
 # 	$(CC) $(BOBJ) -o checker
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o so_long
+	$(CC) $(OBJ) -lmlx -framework OpenGl -framework Appkit -o so_long
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@

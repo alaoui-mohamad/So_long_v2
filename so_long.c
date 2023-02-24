@@ -42,7 +42,7 @@ char **parser_map(int ac, char **av)
 		printf("Error: wrong number of arguments \n");
 		exit(0);
 	}
-	b.arr = read_map( av);
+	b.arr = read_map(av);
 	check_map(b.arr);
 	b.line = double_pointer_to_char(b.arr);
 	len = ft_strlen(b.arr[0]);
@@ -53,7 +53,10 @@ char **parser_map(int ac, char **av)
 }
 int main(int argc, char const *argv[])
 {
-	parser_map(argc, (char **)argv);
+	char **map;
+
+	map = parser_map(argc, (char **)argv);
+	draw_map(map);
 	return 0;
 }
 
