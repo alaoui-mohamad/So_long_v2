@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <stdio.h>
+#include "mlx.h"
 #include "get_next_line/get_next_line_bonus.h"
 
 #define SQUARE_SIZE 32
@@ -70,4 +71,5 @@ int draw_map(char **map, int coins);
 void move_player(t_st *b, int x, int y);
 void drow_player_exit(t_st *b);
 void draw_files(t_st *b);
+int count_collectibles(char **map);
 #endif

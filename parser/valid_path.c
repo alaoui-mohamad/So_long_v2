@@ -1,7 +1,28 @@
 
 #include "../so_long.h"
 
+int count_collectibles(char **map)
+{
+	int i;
+	int j;
+	int count;
 
+	i = 0;
+	j = 0;
+	count = 0;
+	while (map[i])
+	{
+		while (map[i][j])
+		{
+			if (map[i][j] == 'C')
+				count++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (count);
+}
 int player_position(char **line)
 {
 	int i;

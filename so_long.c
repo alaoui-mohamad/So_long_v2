@@ -1,6 +1,25 @@
 
 #include "so_long.h"
 
+
+int draw_map(char **map, int coins)
+{
+    t_st b;
+
+    b.arr = map;
+    b.coins = coins;
+    b.mlx = mlx_init();
+    b.y = ft_count_colums(map);
+    b.x = ft_strlen(map[0]);
+    b.win = mlx_new_window(b.mlx, b.x * SQUARE_SIZE, b.y * SQUARE_SIZE, "My Map");
+    read_files(&b);
+    draw_files(&b);
+    mlx_hook(b.win, 2, 0, read_key, &b);
+    mlx_loop(b.mlx);
+
+    return 0;
+}
+
 char *double_pointer_to_char(char **line)
 {
 	int i;
@@ -51,28 +70,7 @@ char **parser_map(int ac, char **av)
 	check_path(b.line);
 	return (b.arr);
 }
-int count_collectibles(char **map)
-{
-	int i;
-	int j;
-	int count;
 
-	i = 0;
-	j = 0;
-	count = 0;
-	while (map[i])
-	{
-		while (map[i][j])
-		{
-			if (map[i][j] == 'C')
-				count++;
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	return (count);
-}
 int main(int argc, char const *argv[])
 {
 	char **map;

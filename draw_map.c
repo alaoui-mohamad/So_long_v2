@@ -1,4 +1,3 @@
-#include "mlx.h"
 #include "so_long.h"
 
 void move_player(t_st *b, int x, int y)
@@ -92,21 +91,4 @@ void draw_files(t_st *b)
         }
         b->i++;
     }
-}
-int draw_map(char **map, int coins)
-{
-    t_st b;
-
-    b.arr = map;
-    b.coins = coins;
-    b.mlx = mlx_init();
-    b.y = ft_count_colums(map);
-    b.x = ft_strlen(map[0]);
-    b.win = mlx_new_window(b.mlx, b.x * SQUARE_SIZE, b.y * SQUARE_SIZE, "My Map");
-    read_files(&b);
-    draw_files(&b);
-    mlx_hook(b.win, 2, 0, read_key, &b);
-    mlx_loop(b.mlx);
-
-    return 0;
 }
