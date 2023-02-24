@@ -1,6 +1,6 @@
 #include "../so_long.h"
 
-void check_heads(char *line)
+void	check_heads(char *line)
 {
 	int j;
 
@@ -8,16 +8,15 @@ void check_heads(char *line)
 
 	while (line[j])
 	{
-		printf("%c", line[j]);
 		if (line[j] != '1')
 		{
-			printf("map not valid (not wall)");
-			exit(0);
+			free(line);
+			print_simple_error("Error : map not valid (head) \n");
 		}
 		j++;
 	}
 }
-int check_allowed_char(char *line)
+int	check_allowed_char(char *line)
 {
 	int i;
 	int n;
@@ -28,8 +27,8 @@ int check_allowed_char(char *line)
 	{
 		if (line[i] != '1' && line[i] != '0' && line[i] != 'C' && line[i] != 'E' && line[i] != 'P')
 		{
-			printf("map not valid (not allowed char)");
-			exit(0);
+			free(line);
+			print_simple_error("Error : map not valid (not allowed char) \n");
 		}
 		i++;
 	}
@@ -41,7 +40,7 @@ void delete_backslash(char *line)
 	int n;
 
 	i = 0;
-	n = strlen(line);
+	n = ft_strlen(line);
 	while (i < n)
 	{
 		if (line[i] == '\n')
@@ -62,13 +61,14 @@ int check_map_equal(char **line)
 	{
 		if (ft_strlen(line[i]) != n)
 		{
-			printf("map not valid (not equal)");
-			exit(0);
+			free_map(line);
+			print_simple_error("Error : map not valid (not equal) \n");
 		}
 		i++;
 	}
 	return (1);
 }
+
 int check_map_valid(char **line)
 {
 	t_st b;
@@ -92,8 +92,8 @@ int check_map_valid(char **line)
 	}
 	if (b.start != 1 || b.end != 1)
 	{
-		printf("map not valid (more then one start or end))");
-		exit(0);
+		free_map(line);
+		print_simple_error("Error : map not valid (start or end) \n");
 	}
 	return (1);
 }

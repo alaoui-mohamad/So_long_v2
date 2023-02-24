@@ -2,30 +2,40 @@
 #include "so_long.h"
 
 
-int draw_map(char **map, int coins)
+int	destory(t_st *b)
 {
-    t_st b;
+	print_error(b, "Error : window closed \n");
+	exit(0);
+	return (0);
+}
 
+int	draw_map(char **map, int coins)
+{
+	t_st	b;
+
+	b.count_m = 0;
     b.arr = map;
     b.coins = coins;
     b.mlx = mlx_init();
     b.y = ft_count_colums(map);
     b.x = ft_strlen(map[0]);
-    b.win = mlx_new_window(b.mlx, b.x * SQUARE_SIZE, b.y * SQUARE_SIZE, "My Map");
-    read_files(&b);
-    draw_files(&b);
-    mlx_hook(b.win, 2, 0, read_key, &b);
-    mlx_loop(b.mlx);
+    b.win = mlx_new_window(b.mlx, b.x * SQUARE, b.y * SQUARE, "So Long");
+	read_files(&b);
+	draw_files(&b);
+	mlx_hook(b.win, 2, 0, read_key, &b);
+	mlx_hook(b.win, 17, 0, destory, &b);
 
-    return 0;
+	mlx_loop(b.mlx);
+
+	return (0);
 }
 
-char *double_pointer_to_char(char **line)
+char	*double_pointer_to_char(char **line)
 {
-	int i;
-	int j;
-	int n;
-	char *str;
+	int		i;
+	int		j;
+	int		n;
+	char 	*str;
 
 	i = 0;
 	j = 0;
@@ -45,39 +55,44 @@ char *double_pointer_to_char(char **line)
 	return (str);
 }
 
-void check_map(char **line)
+void	check_map(t_st *b)
 {
-	check_map_valid(line);
-	check_map_equal(line);
-	check_wall_map(line);
-	check_map_rectangular(line);
+	b->width = ft_strlen(b->arr[0]);
+	check_map_valid(b->arr);
+	check_map_equal(b->arr);
+	check_wall_map(b->arr);
+	check_map_rectangular(b->arr);
+	check_e_isblocked(b->line, b->width);
 }
-char **parser_map(int ac, char **av)
+void fun()
 {
-	t_st b;
-	int len;
+	system("leaks so_long");
+}
+char	**parser_map(int ac, char **av)
+{
+	t_st	b;
+	int		len;
+
 	if (ac != 2)
-	{
-		printf("Error: wrong number of arguments \n");
-		exit(0);
-	}
+		print_simple_error("Error : Wrong number of arguments \n");
 	b.arr = read_map(av);
-	check_map(b.arr);
 	b.line = double_pointer_to_char(b.arr);
+	check_map(&b);
 	len = ft_strlen(b.arr[0]);
 	b.line = check_path_valid(b.line, player_position(b.arr), len);
-	printf("%s\n", b.line);
 	check_path(b.line);
 	return (b.arr);
 }
 
-int main(int argc, char const *argv[])
+int	main(int argc, char **argv)
 {
-	char **map;
-	int count_c;
-	map = parser_map(argc, (char **)argv);
-	count_c = count_collectibles(map);
+	char	**map;
+	int		count_c;
+
+	map = parser_map(argc , argv);
+	count_c = count_collec(map);
 	draw_map(map, count_c);
-	return 0;
+	atexit(fun);
+	return (0);
 }
 

@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   valid_path.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/24 19:23:34 by m-alaoui          #+#    #+#             */
+/*   Updated: 2023/02/24 20:19:25 by m-alaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../so_long.h"
 
-int count_collectibles(char **map)
+
+int	count_collec(char **map)
 {
-	int i;
-	int j;
-	int count;
+	int	i;
+	int	j;
+	int	count;
 
 	i = 0;
 	j = 0;
@@ -23,11 +35,12 @@ int count_collectibles(char **map)
 	}
 	return (count);
 }
-int player_position(char **line)
+
+int	player_position(char **line)
 {
-	int i;
-	int j;
-	int n;
+	int	i;
+	int	j;
+	int	n;
 
 	i = 0;
 	j = 0;
@@ -47,7 +60,8 @@ int player_position(char **line)
 	}
 	return (0);
 }
-char *check_path_valid(char *line, int position, int n)
+
+char	*check_path_valid(char *line, int position, int n)
 {
 	line[position] = '1';
 	if (line[position - 1] == '0' || line[position - 1] == 'C')
@@ -58,34 +72,22 @@ char *check_path_valid(char *line, int position, int n)
 		check_path_valid(line, position - n, n);
 	if (line[position + n] == '0' || line[position + n] == 'C')
 		check_path_valid(line, position + n, n);
-	
 	return (line);
 }
 
-int check_path(char *line)
+int	check_path(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(line[i])
+	while (line[i])
 	{
 		if (line[i] == 'C')
 		{
-			printf("Error map not valid (not path) \n");
-			exit(0);
+			free(line);
+			print_simple_error("Error : can't collect all the coins");
 		}
 		i++;
 	}
 	return (1);
 }
-// int exit_isblocked(char *line , int pos_e)
-// {
-//     // int i;
-
-//     // i = 0;
-//     // while(line[i])
-//     // {
-//     //     if 
-//     // }
-//     // return (1);
-// }

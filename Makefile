@@ -7,6 +7,7 @@ FILES=  get_next_line/get_next_line_bonus \
 		parser/valid_map \
 		parser/map_valid \
 		parser/valid_path \
+		parser/logs \
 		read_map/read_map_for_parser \
 		draw_map \
 		so_long \

@@ -1,8 +1,8 @@
 #include "../so_long.h"
 
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s1[i] && (s1[i] == s2[i]) && n--)
@@ -12,38 +12,60 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-int ft_count_colums(char **line)
+int	ft_count_colums(char **line)
 {
-	int j;
+	int	j;
 
 	j = -1;
 	while (line[++j])
 	{
 		if (line[j][0] == '\0')
 		{
-			break;
+			break ;
 		}
 	}
 	return (j);
 }
-int check_map_rectangular(char **line)
+
+int	check_map_rectangular(char **line)
 {
-	int n;
-	int m;
+	int	n;
+	int	m;
 
 	n = ft_strlen(line[0]);
 	m = ft_count_colums(line);
 
 	if (m == n)
 	{
-		printf("Error map not valid (not rectangular) \n");
-		exit(0);
+		free_map(line);
+		print_simple_error("Error : map not valid (not rectangular) \n");
 	}
 	return (1);
 }
-int check_wall_map(char **line)
+int	check_e_isblocked(char *line, int n)
 {
-	t_st b;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (line[i])
+	{
+		if (line[i] == 'E')
+		{
+			if (line[i - 1] == '1' && line[i + 1] == '1' && line[i - n] == '1' && line[i + n] == '1')
+			{
+				free(line);
+				print_simple_error("Error map not valid (exit is blocked) \n");
+			}
+		}
+		i++;
+	}
+	return (1);
+}
+int	check_wall_map(char **line)
+{
+	t_st	b;
 
 	b.i = 0;
 	b.j = 0;
@@ -57,9 +79,8 @@ int check_wall_map(char **line)
 		}
 		if (line[b.i][b.j] != '1' || line[b.i][b.width - 1] != '1')
 		{
-
-			printf("map not valid (not wall)");
-			exit(0);
+			free_map(line);
+			print_simple_error("Error map not valid (not wall) \n");
 		}
 		b.j = 0;
 		b.i++;

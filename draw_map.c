@@ -1,32 +1,65 @@
 #include "so_long.h"
 
+void ft_putchar_fd(char c, int fd)
+{
+    write(fd, &c, 1);
+}
+
+void ft_putnbr_fd(int nb, int fd)
+{
+    size_t n;
+
+    n = nb;
+    if (nb < 0)
+    {
+        ft_putchar_fd('-', fd);
+        n *= -1;
+    }
+    if (n < 10)
+        ft_putchar_fd(n + 48, fd);
+    else
+    {
+        ft_putnbr_fd(n / 10, fd);
+        ft_putnbr_fd(n % 10, fd);
+    }
+}
+
+void complet_move_player(t_st *b, int x, int y)
+{
+    if (b->arr[b->i + y][b->j + x] == 'E' && b->coins == 0)
+    {
+        ft_putstr_fd("You win!", 1);
+        exit(0);
+    }
+    if (b->arr[b->i + y][b->j + x] == '1' || b->arr[b->i + y][b->j + x] == 'E')
+        return;
+    if (b->arr[b->i + y][b->j + x] == 'C')
+        b->coins--;
+    b->arr[b->i][b->j] = '0';
+    b->arr[b->i + y][b->j + x] = 'P';
+    b->count_m++;
+    ft_putstr_fd("Moves: ", 1);
+    ft_putnbr_fd(b->count_m, 1);
+    write(1, "\n", 1);
+    return;
+}
 void move_player(t_st *b, int x, int y)
 {
-    int i = 0;
-    int j = 0;
-    while (b->arr[i])
+    b->i = 0;
+    b->j = 0;
+    while (b->arr[b->i])
     {
-        while (b->arr[i][j])
+        while (b->arr[b->i][b->j])
         {
-            if (b->arr[i][j] == 'P')
+            if (b->arr[b->i][b->j] == 'P')
             {
-                if (b->arr[i + y][j + x] == 'E' && b->coins == 0)
-                {
-                    ft_putstr_fd("You win!", 1);
-                    exit(0);
-                }
-                if (b->arr[i + y][j + x] == '1' || b->arr[i + y][j + x] == 'E')
-                    return;
-                if (b->arr[i + y][j + x] == 'C')
-                    b->coins--;
-                b->arr[i][j] = '0';
-                b->arr[i + y][j + x] = 'P';
+                complet_move_player(b, x, y);
                 return;
             }
-            j++;
+            b->j++;
         }
-        j = 0;
-        i++;
+        b->j = 0;
+        b->i++;
     }
 }
 int read_key(int keycode, t_st *b)
@@ -59,13 +92,13 @@ void drow_player_exit(t_st *b)
 {
     if (b->arr[b->i][b->j] == 'E')
     {
-        mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE_SIZE * b->j, SQUARE_SIZE * b->i);
-        mlx_put_image_to_window(b->mlx, b->win, b->exit, SQUARE_SIZE * b->j, SQUARE_SIZE * b->i);
+        mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, SQUARE * b->i);
+        mlx_put_image_to_window(b->mlx, b->win, b->exit, SQUARE * b->j, SQUARE * b->i);
     }
     if (b->arr[b->i][b->j] == 'P')
     {
-        mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE_SIZE * b->j, SQUARE_SIZE * b->i);
-        mlx_put_image_to_window(b->mlx, b->win, b->player, SQUARE_SIZE * b->j, SQUARE_SIZE * b->i);
+        mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, SQUARE * b->i);
+        mlx_put_image_to_window(b->mlx, b->win, b->player, SQUARE * b->j, SQUARE * b->i);
     }
 }
 
@@ -78,13 +111,13 @@ void draw_files(t_st *b)
         while (b->j < b->x)
         {
             if (b->arr[b->i][b->j] == '1')
-                mlx_put_image_to_window(b->mlx, b->win, b->wall, SQUARE_SIZE * b->j, SQUARE_SIZE * b->i);
+                mlx_put_image_to_window(b->mlx, b->win, b->wall, SQUARE * b->j, SQUARE * b->i);
             if (b->arr[b->i][b->j] == '0')
-                mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE_SIZE * b->j, SQUARE_SIZE * b->i);
+                mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, SQUARE * b->i);
             if (b->arr[b->i][b->j] == 'C')
             {
-                mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE_SIZE * b->j, SQUARE_SIZE * b->i);
-                mlx_put_image_to_window(b->mlx, b->win, b->col, SQUARE_SIZE * b->j + SQUARE_SIZE / 4, SQUARE_SIZE * b->i + SQUARE_SIZE / 4);
+                mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, SQUARE * b->i);
+                mlx_put_image_to_window(b->mlx, b->win, b->col, SQUARE * b->j + SQUARE / 4, SQUARE * b->i + SQUARE / 4);
             }
             drow_player_exit(b);
             b->j++;
