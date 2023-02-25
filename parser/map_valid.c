@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 04:08:53 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 22:32:27 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 22:38:38 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	check_e_isblocked(char *line, int n)
 
 	i = 0;
 	j = 0;
-	printf("s-> %s", line);
 	while (line[i])
 	{
 		if (line[i] == 'E')

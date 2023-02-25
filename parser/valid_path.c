@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:23:34 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 22:20:11 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:19:54 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,23 @@ int	player_position(char **line)
 	return (0);
 }
 
-char	*check_path_valid(char *line, int p, int n)
+char	*check_path_valid(char *line, int position, int n)
 {
-	if ((line[p - n] == '0' || line[p - n] == 'C') && (line[p] != '1'))
-	{
-		line[p] = 'P';
-		check_path_valid(line, p - n, n);
-	}
-	if ((line[p - 1] == '0' || line[p - 1] == 'C') && (line[p] != '1'))
-	{
-		line[p] = 'P';
-		check_path_valid(line, p - 1, n);
-	}
-	if ((line[p + 1] == '0' || line[p + 1] == 'C') && (line[p] != '1'))
-	{
-		line[p] = 'P';
-		check_path_valid(line, p + 1, n);
-	}
-	if ((line[p + n] == '0' || line[p + n] == 'C') && (line[p] != '1'))
-	{
-		line[p] = 'P';
-		check_path_valid(line, p + n, n);
-	}
+	if (line[position] == '1')
+		return (0);
+	line[position] = 'P';
+	if (line[position - n - 1] == '0' || line[position - n - 1] == 'C'
+		|| line[position - n - 1] == 'E')
+		check_path_valid(line, position - n, n);
+	if (line[position - 1] == '0' || line[position - 1] == 'C'
+		|| line[position - 1] == 'E')
+		check_path_valid(line, position - 1, n);
+	if (line[position + 1] == '0' || line[position + 1] == 'C'
+		|| line[position + 1] == 'E')
+		check_path_valid(line, position + 1, n);
+	if (line[position + n - 1] == '0' || line[position + n - 1] == 'C'
+		|| line[position + n - 1] == 'E')
+		check_path_valid(line, position + n, n);
 	return (line);
 }
 
@@ -90,10 +85,9 @@ int	check_path(char *line)
 	int	i;
 
 	i = 0;
-	printf("line = %s", line);
 	while (line[i])
 	{
-		if (line[i] == 'C')
+		if (line[i] == 'C' || line[i] == 'E')
 		{
 			free(line);
 			print_simple_error("Error : can't collect all the coins");

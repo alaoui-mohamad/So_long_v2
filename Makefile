@@ -11,17 +11,14 @@ FILES=  get_next_line/get_next_line_bonus \
 		parser/logs \
 		read_map/read_map_for_parser \
 		draw_map \
-		so_long \
+		so_long 
 OBJ=$(FILES:=.o)
-# BOBJ=$(BFILES:=.o)
 NAME=so_long
 
 .PHONY: all bonus clean fclean re
 
 all: $(NAME)
 
-# bonus: $(BOBJ)
-# 	$(CC) $(BOBJ) -o checker
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -lmlx -framework OpenGl -framework Appkit -o so_long
