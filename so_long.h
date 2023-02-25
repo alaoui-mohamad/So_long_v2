@@ -54,7 +54,7 @@ int	    ft_hieght(char **av);
 
 // check map path if is valid
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
-char    *check_path_valid(char *line, int position, int n);
+char    *check_path_valid(char *line, int p, int n);
 int     check_path(char *line);
 char    *double_pointer_to_char(char **line);
 int     player_position(char **line);

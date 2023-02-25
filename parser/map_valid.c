@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 04:08:53 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 15:32:46 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:46:48 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,13 @@ int	check_e_isblocked(char *line, int n)
 
 	i = 0;
 	j = 0;
+	printf("s-> %s", line);
 	while (line[i])
 	{
 		if (line[i] == 'E')
 		{
-			if (line[i - 1] == '1' && line[i + 1] == '1' &&
-				line[i - n] == '1' && line[i + n] == '1')
+			if (line[i - 1] != 'P' && line[i + 1] != 'P' &&
+				line[i - n] != 'P' && line[i + n] != 'P')
 			{
 				free(line);
 				print_simple_error("Error map not valid (exit is blocked) \n");
@@ -87,7 +88,7 @@ int	check_wall_map(char **line)
 	b.height = ft_count_colums(line);
 	while (line[b.i])
 	{
-		if (b.i == 0 || b.i == b.height - 1)
+		if (b.i == 0 && b.i == b.height - 1)
 		{
 			check_heads(line[b.i]);
 		}

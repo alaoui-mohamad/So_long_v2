@@ -1,9 +1,9 @@
 
 #include "so_long.h"
 
-int draw_map(char **map, int coins)
+int	draw_map(char **map, int coins)
 {
-	t_st b;
+	t_st	b;
 
 	b.count_m = 0;
 	b.arr = map;
@@ -24,10 +24,10 @@ int draw_map(char **map, int coins)
 
 char	*double_pointer_to_char(char **line)
 {
-	int i;
-	int j;
-	int n;
-	char *str;
+	int		i;
+	int		j;
+	int		n;
+	char	*str;
 
 	i = 0;
 	j = 0;
@@ -37,7 +37,7 @@ char	*double_pointer_to_char(char **line)
 		free(str);
 	while (line[i])
 	{
-		while (line[i][j -1])
+		while (line[i][j])
 		{
 			str[i * n + j] = line[i][j];
 			j++;
@@ -60,7 +60,6 @@ void check_map(t_st *b)
 	check_map_equal(b->arr);
 	check_wall_map(b->arr);
 	check_map_rectangular(b->arr);
-	check_e_isblocked(b->line, b->width);
 }
 
 char **parser_map(int ac, char **av)
@@ -71,11 +70,13 @@ char **parser_map(int ac, char **av)
 	if (ac != 2)
 		print_simple_error("Error : Wrong number of arguments \n");
 	b.arr = read_map(av);
+	len = ft_strlen(b.arr[0]);
+	b.arr = delete_backslash(b.arr);
 	b.line = double_pointer_to_char(b.arr);
 	check_map(&b);
-	// b.arr = delete_backslash(b.arr);
 	b.line = check_path_valid(b.line, player_position(b.arr), len);
 	check_path(b.line);
+	check_e_isblocked(b.line, len);
 	return (b.arr);
 }
 

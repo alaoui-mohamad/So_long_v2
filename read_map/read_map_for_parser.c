@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:24:52 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 15:50:19 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 19:58:18 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ char	**read_map(char **av)
 
 	b.i = 0;
 	b.height = ft_hieght(av);
+	printf("%d \n" , b.height);
 	fd = read_file(av[1]);
 	map = (char **)malloc(sizeof(char *) * (b.height + 1));
 	if (!map)
