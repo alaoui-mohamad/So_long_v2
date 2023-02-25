@@ -6,17 +6,17 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:24:52 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 01:22:56 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 03:54:52 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_hieght(char **av)
+int ft_hieght(char **av)
 {
-	int		height;
-	int		fd;
-	char	*line;
+	int height;
+	int fd;
+	char *line;
 
 	height = 0;
 	fd = read_file(av[1]);
@@ -24,16 +24,15 @@ int	ft_hieght(char **av)
 	while (line)
 	{
 		height++;
-		free(line);
 		line = get_next_line(fd);
 	}
 	return (height);
 }
 
-char	*ft_strrchr(const char *s, int c)
+char *ft_strrchr(const char *s, int c)
 {
-	char	*str;
-	int		len;
+	char *str;
+	int len;
 
 	str = (char *)s;
 	len = ft_strlen(s);
@@ -48,9 +47,9 @@ char	*ft_strrchr(const char *s, int c)
 	return (0);
 }
 
-void	ft_putstr_fd(char *s, int fd)
+void ft_putstr_fd(char *s, int fd)
 {
-	int	i;
+	int i;
 
 	if (!s)
 		return ((void)0);
@@ -58,10 +57,10 @@ void	ft_putstr_fd(char *s, int fd)
 	write(fd, s, i);
 }
 
-int	read_file(char *path)
+int read_file(char *path)
 {
-	char	*extension;
-	int		fd;
+	char *extension;
+	int fd;
 
 	extension = ft_strrchr(path, '.');
 	if (extension == 0 || ft_strncmp(".ber", extension, ft_strlen(extension)))
@@ -72,12 +71,19 @@ int	read_file(char *path)
 
 	return (fd);
 }
-
-char	**read_map(char **av)
+void check_line_backslach(char *line)
 {
-	t_st		b;
-	static char	**map;
-	int			fd;
+	int n;
+	n = ft_strlen(line);
+	if (line[n - 1] == '\n')
+		print_simple_error("Error : Map is not closed \n");
+}
+
+char **read_map(char **av)
+{
+	t_st b;
+	static char **map;
+	int fd;
 
 	b.i = 0;
 	b.height = ft_hieght(av);
@@ -89,13 +95,7 @@ char	**read_map(char **av)
 	while (b.i < b.height)
 	{
 		map[b.i] = get_next_line(fd);
-		delete_backslash(map[b.i]);
 		check_allowed_char(map[b.i]);
-		if ((ft_strlen(map[b.i]) == 0))
-		{
-			free_map(map);
-			print_simple_error("Error");
-		}
 		b.i++;
 	}
 	return (map);

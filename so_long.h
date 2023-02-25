@@ -59,7 +59,7 @@ int     player_position(char **line);
 int	    destory(t_st *b);
 // check map if is valid
 int     check_allowed_char(char *line);
-void    delete_backslash(char *line);
+void    delete_backslash(char **line);
 int     check_map_equal(char **line);
 int     check_map_valid(char **line);
 void    check_heads(char *line);
@@ -81,4 +81,6 @@ void    free_map(char **map);
 void    prinf_message(char *str);
 void    ft_putnbr_fd(int nb, int fd);
 void	ft_putchar_fd(char c, int fd);
+void    check_line_backslach(char *line);
+
 #endif

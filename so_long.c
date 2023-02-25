@@ -54,6 +54,9 @@ char *double_pointer_to_char(char **line)
 void check_map(t_st *b)
 {
 	b->width = ft_strlen(b->arr[0]);
+	b->height = ft_count_colums(b->arr);
+	check_line_backslach(b->arr[b->height - 1]);
+	delete_backslash(b->arr);
 	check_map_valid(b->arr);
 	check_map_equal(b->arr);
 	check_wall_map(b->arr);

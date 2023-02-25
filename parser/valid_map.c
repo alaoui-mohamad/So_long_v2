@@ -23,8 +23,9 @@ int	check_allowed_char(char *line)
 
 	i = 0;
 	n = ft_strlen(line);
-	while (i < n)
+	while (i < n - 1)
 	{
+		
 		if (line[i] != '1' && line[i] != '0' && line[i] != 'C' && line[i] != 'E' && line[i] != 'P')
 		{
 			free(line);
@@ -34,17 +35,17 @@ int	check_allowed_char(char *line)
 	}
 	return (1);
 }
-void delete_backslash(char *line)
+void delete_backslash(char **line)
 {
 	int i;
 	int n;
 
 	i = 0;
-	n = ft_strlen(line);
-	while (i < n)
+	n = ft_strlen(line[0]);
+	while (line[i])
 	{
-		if (line[i] == '\n')
-			line[i] = '\0';
+		if (line[i][n - 1] == '\n')
+			line[i][n - 1] = '\0';
 		i++;
 	}
 }
@@ -62,7 +63,7 @@ int check_map_equal(char **line)
 		if (ft_strlen(line[i]) != n)
 		{
 			free_map(line);
-			print_simple_error("Error : map not valid (not equal) \n");
+			print_simple_error("Error : map not valid\n");
 		}
 		i++;
 	}
@@ -71,7 +72,7 @@ int check_map_equal(char **line)
 
 int check_map_valid(char **line)
 {
-	t_st b;
+	t_st	b;
 
 	b.i = 0;
 	b.j = 0;
