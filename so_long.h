@@ -41,7 +41,6 @@ typedef struct l_st
 
 // read map
 size_t	ft_strlen(const char *s);
-int     ft_hieght(char **av);
 char    *ft_strrchr(const char *s, int c);
 void    ft_putstr_fd(char *s, int fd);
 int     read_file(char *path);

@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:53:31 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/21 02:31:40 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 01:13:03 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	*ft_check_next(char *ret)
 	free(ret);
 	return (save);
 }
+
 char	*ft_ret_line(char *ret)
 {
 	int		i;
@@ -96,6 +97,7 @@ char	*ft_get_line(int fd, char *ret)
 	free(buffer);
 	return (ret);
 }
+
 char	*get_next_line(int fd)
 {
 	static char *ret[OPEN_MAX];
@@ -108,6 +110,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_ret_line(ret[fd]);
 	ret[fd] = ft_check_next(ret[fd]);
+	printf("%p\n", line);
 
 	return (line);
 }

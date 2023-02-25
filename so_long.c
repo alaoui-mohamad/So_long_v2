@@ -85,5 +85,6 @@ int	main(int argc, char **argv)
 	map = parser_map(argc, argv);
 	count_c = count_collec(map);
 	draw_map(map, count_c);
+
 	return (0);
 }
