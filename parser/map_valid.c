@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_valid.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 04:08:53 by m-alaoui          #+#    #+#             */
+/*   Updated: 2023/02/25 04:08:59 by m-alaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "../so_long.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -42,6 +55,7 @@ int	check_map_rectangular(char **line)
 	}
 	return (1);
 }
+
 int	check_e_isblocked(char *line, int n)
 {
 	int	i;
@@ -53,7 +67,8 @@ int	check_e_isblocked(char *line, int n)
 	{
 		if (line[i] == 'E')
 		{
-			if (line[i - 1] == '1' && line[i + 1] == '1' && line[i - n] == '1' && line[i + n] == '1')
+			if (line[i - 1] == '1' && line[i + 1] == '1' &&
+				line[i - n] == '1' && line[i + n] == '1')
 			{
 				free(line);
 				print_simple_error("Error map not valid (exit is blocked) \n");
@@ -63,6 +78,7 @@ int	check_e_isblocked(char *line, int n)
 	}
 	return (1);
 }
+
 int	check_wall_map(char **line)
 {
 	t_st	b;

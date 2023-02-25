@@ -6,28 +6,13 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:24:52 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 03:54:52 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 04:10:18 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int ft_hieght(char **av)
-{
-	int height;
-	int fd;
-	char *line;
 
-	height = 0;
-	fd = read_file(av[1]);
-	line = get_next_line(fd);
-	while (line)
-	{
-		height++;
-		line = get_next_line(fd);
-	}
-	return (height);
-}
 
 char *ft_strrchr(const char *s, int c)
 {

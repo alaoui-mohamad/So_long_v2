@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 00:30:47 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 00:51:27 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 04:10:28 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,21 @@ int	destory(t_st *b)
 	print_error(b, "Error : window closed \n");
 	exit(0);
 	return (0);
+}
+
+int ft_hieght(char **av)
+{
+	int height;
+	int fd;
+	char *line;
+
+	height = 0;
+	fd = read_file(av[1]);
+	line = get_next_line(fd);
+	while (line)
+	{
+		height++;
+		line = get_next_line(fd);
+	}
+	return (height);
 }

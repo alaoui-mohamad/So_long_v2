@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   valid_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 04:09:17 by m-alaoui          #+#    #+#             */
+/*   Updated: 2023/02/25 04:10:01 by m-alaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "../so_long.h"
 
 void	check_heads(char *line)
 {
-	int j;
+	int	j;
 
 	j = 0;
 
@@ -16,6 +29,7 @@ void	check_heads(char *line)
 		j++;
 	}
 }
+
 int	check_allowed_char(char *line)
 {
 	int i;
@@ -25,8 +39,8 @@ int	check_allowed_char(char *line)
 	n = ft_strlen(line);
 	while (i < n - 1)
 	{
-		
-		if (line[i] != '1' && line[i] != '0' && line[i] != 'C' && line[i] != 'E' && line[i] != 'P')
+		if (line[i] != '1' && line[i] != '0' && line[i] != 'C' &&
+			line[i] != 'E' && line[i] != 'P')
 		{
 			free(line);
 			print_simple_error("Error : map not valid (not allowed char) \n");
@@ -35,10 +49,11 @@ int	check_allowed_char(char *line)
 	}
 	return (1);
 }
-void delete_backslash(char **line)
+
+void	delete_backslash(char **line)
 {
-	int i;
-	int n;
+	int	i;
+	int	n;
 
 	i = 0;
 	n = ft_strlen(line[0]);
@@ -49,11 +64,12 @@ void delete_backslash(char **line)
 		i++;
 	}
 }
-int check_map_equal(char **line)
+
+int	check_map_equal(char **line)
 {
-	int i;
-	int j;
-	int n;
+	int	i;
+	int	j;
+	int	n;
 
 	i = 0;
 	j = 0;
@@ -70,7 +86,7 @@ int check_map_equal(char **line)
 	return (1);
 }
 
-int check_map_valid(char **line)
+int	check_map_valid(char **line)
 {
 	t_st	b;
 
