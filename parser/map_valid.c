@@ -6,10 +6,9 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 04:08:53 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 04:08:59 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:32:46 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../so_long.h"
 
@@ -47,7 +46,6 @@ int	check_map_rectangular(char **line)
 
 	n = ft_strlen(line[0]);
 	m = ft_count_colums(line);
-
 	if (m == n)
 	{
 		free_map(line);

@@ -14,11 +14,11 @@
 #define SQUARE 32
 typedef struct l_st
 {
-    void *mlx;
-    void *win;
+    void    *mlx;
+    void    *win;
 
-    void *img;
-    void *exit;
+    void    *img;
+    void    *exit;
     void *empty;
     void *col;
     void *wall;
@@ -60,8 +60,8 @@ char    *double_pointer_to_char(char **line);
 int     player_position(char **line);
 int	    destory(t_st *b);
 // check map if is valid
-int     check_allowed_char(char *line);
-void    delete_backslash(char **line);
+int     check_allowed_char(char **line);
+char    **delete_backslash(char **line);
 int     check_map_equal(char **line);
 int     check_map_valid(char **line);
 void    check_heads(char *line);

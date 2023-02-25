@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:23:34 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/24 20:19:25 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:41:58 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ char	*check_path_valid(char *line, int position, int n)
 		check_path_valid(line, position - n, n);
 	if (line[position + n] == '0' || line[position + n] == 'C')
 		check_path_valid(line, position + n, n);
+	
 	return (line);
 }
 
@@ -80,6 +81,7 @@ int	check_path(char *line)
 	int	i;
 
 	i = 0;
+	
 	while (line[i])
 	{
 		if (line[i] == 'C')

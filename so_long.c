@@ -1,8 +1,6 @@
 
 #include "so_long.h"
 
-
-
 int draw_map(char **map, int coins)
 {
 	t_st b;
@@ -24,7 +22,7 @@ int draw_map(char **map, int coins)
 	return (0);
 }
 
-char *double_pointer_to_char(char **line)
+char	*double_pointer_to_char(char **line)
 {
 	int i;
 	int j;
@@ -39,7 +37,7 @@ char *double_pointer_to_char(char **line)
 		free(str);
 	while (line[i])
 	{
-		while (line[i][j])
+		while (line[i][j -1])
 		{
 			str[i * n + j] = line[i][j];
 			j++;
@@ -57,6 +55,7 @@ void check_map(t_st *b)
 	b->height = ft_count_colums(b->arr);
 	check_line_backslach(b->arr[b->height - 1]);
 	delete_backslash(b->arr);
+	check_allowed_char(b->arr);
 	check_map_valid(b->arr);
 	check_map_equal(b->arr);
 	check_wall_map(b->arr);
@@ -68,13 +67,13 @@ char **parser_map(int ac, char **av)
 {
 	t_st b;
 	int len;
-
+	int i = 0;
 	if (ac != 2)
 		print_simple_error("Error : Wrong number of arguments \n");
 	b.arr = read_map(av);
 	b.line = double_pointer_to_char(b.arr);
 	check_map(&b);
-	len = ft_strlen(b.arr[0]);
+	// b.arr = delete_backslash(b.arr);
 	b.line = check_path_valid(b.line, player_position(b.arr), len);
 	check_path(b.line);
 	return (b.arr);
@@ -83,7 +82,7 @@ char **parser_map(int ac, char **av)
 int	main(int argc, char **argv)
 {
 	char	**map;
-	int 	count_c;
+	int		count_c;
 
 	map = parser_map(argc, argv);
 	count_c = count_collec(map);
