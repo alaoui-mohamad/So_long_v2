@@ -6,18 +6,16 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:24:52 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 04:10:18 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 04:14:45 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-
-
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	char *str;
-	int len;
+	char	*str;
+	int		len;
 
 	str = (char *)s;
 	len = ft_strlen(s);
@@ -32,9 +30,9 @@ char *ft_strrchr(const char *s, int c)
 	return (0);
 }
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int i;
+	int	i;
 
 	if (!s)
 		return ((void)0);
@@ -42,10 +40,10 @@ void ft_putstr_fd(char *s, int fd)
 	write(fd, s, i);
 }
 
-int read_file(char *path)
+int	read_file(char *path)
 {
-	char *extension;
-	int fd;
+	char	*extension;
+	int		fd;
 
 	extension = ft_strrchr(path, '.');
 	if (extension == 0 || ft_strncmp(".ber", extension, ft_strlen(extension)))
@@ -56,19 +54,21 @@ int read_file(char *path)
 
 	return (fd);
 }
-void check_line_backslach(char *line)
+
+void	check_line_backslach(char *line)
 {
-	int n;
+	int	n;
+
 	n = ft_strlen(line);
 	if (line[n - 1] == '\n')
 		print_simple_error("Error : Map is not closed \n");
 }
 
-char **read_map(char **av)
+char	**read_map(char **av)
 {
-	t_st b;
-	static char **map;
-	int fd;
+	t_st		b;
+	static char	**map;
+	int			fd;
 
 	b.i = 0;
 	b.height = ft_hieght(av);

@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:53:31 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 04:05:22 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 04:13:35 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_ret_line(ret[fd]);
 	ret[fd] = ft_check_next(ret[fd]);
-	printf("%p\n", line);
 
 	return (line);
 }

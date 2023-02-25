@@ -49,6 +49,8 @@ int     ft_count_colums(char **line);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 int     check_map_rectangular(char **line);
 int     check_wall_map(char **line);
+void	complet_move_player(t_st *b, int x, int y);
+int	    ft_hieght(char **av);
 
 // check map path if is valid
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
