@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hello <hello@student.42.fr>                +#+  +:+       +#+        */
+/*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:53:25 by m-alaoui          #+#    #+#             */
-/*   Updated: 2022/11/04 17:05:29 by hello            ###   ########.fr       */
+/*   Updated: 2023/02/25 04:07:11 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ char	*ft_strcat(char *dest, const char *src)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int i;
-	int len_s1;
-	int len_s2;
-	char *new_str;
+	int		i;
+	int		len_s1;
+	int		len_s2;
+	char	*new_str;
 
 	if (!s1)
 	{
@@ -79,12 +79,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	new_str = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (!(new_str))
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
+	i = -1;
+	while (s1[++i])
 		new_str[i] = s1[i];
-		i++;
-	}
 	new_str[i] = '\0';
 	ft_strcat(new_str, s2);
 	free(s1);

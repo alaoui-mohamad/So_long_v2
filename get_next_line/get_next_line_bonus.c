@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:53:31 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 01:13:03 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 04:05:22 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ char	*ft_ret_line(char *ret)
 		i++;
 	rret = (char *)malloc(((i + 2) * sizeof(char)));
 	if (!rret)
-	{
-		free(ret);
 		return (NULL);
-	}
 	i = 0;
 	while (ret[i] && ret[i] != '\n')
 	{
@@ -100,8 +97,8 @@ char	*ft_get_line(int fd, char *ret)
 
 char	*get_next_line(int fd)
 {
-	static char *ret[OPEN_MAX];
-	char *line;
+	static char	*ret[OPEN_MAX];
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
