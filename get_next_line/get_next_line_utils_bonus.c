@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:53:25 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 04:07:11 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 22:30:58 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strchr(const char *s, int c)
 			return (str);
 		str++;
 	}
-	if ((char)!c)
+	if ((char) !c)
 		return (str);
 	return (0);
 }

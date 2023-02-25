@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:39:00 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 04:11:51 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 21:47:03 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	draw_files(t_st *b)
 			{
 				mlx_put_image_to_window(b->mlx, b->win, b->empty,
 					SQUARE * b->j, SQUARE * b->i);
-				mlx_put_image_to_window(b->mlx, b->win, b->col, 
+				mlx_put_image_to_window(b->mlx, b->win, b->col,
 					SQUARE * b->j + SQUARE / 4, SQUARE * b->i + SQUARE / 4);
 			}
 			drow_player_exit(b);

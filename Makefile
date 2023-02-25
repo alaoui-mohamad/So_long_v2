@@ -12,10 +12,6 @@ FILES=  get_next_line/get_next_line_bonus \
 		read_map/read_map_for_parser \
 		draw_map \
 		so_long \
-
-		
-
-
 OBJ=$(FILES:=.o)
 # BOBJ=$(BFILES:=.o)
 NAME=so_long

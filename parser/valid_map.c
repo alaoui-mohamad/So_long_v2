@@ -6,18 +6,17 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 04:09:17 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 17:44:57 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 22:31:47 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void check_heads(char *line)
+void	check_heads(char *line)
 {
-	int j;
+	int	j;
 
 	j = 0;
-
 	while (line[j])
 	{
 		if (line[j] != '1')
@@ -29,11 +28,11 @@ void check_heads(char *line)
 	}
 }
 
-int check_allowed_char(char **line)
+int	check_allowed_char(char **line)
 {
-	int i;
-	int n;
-	int j;
+	int	i;
+	int	n;
+	int	j;
 
 	i = 0;
 	n = ft_strlen(line[0]);
@@ -46,7 +45,7 @@ int check_allowed_char(char **line)
 				line[i][j] != 'E' && line[i][j] != 'P' && line[i][j] != '\n')
 			{
 				free(line);
-				print_simple_error("Error : map not valid ! (not allowed char) \n");
+				print_simple_error("Error (not allowed char) \n");
 			}
 			j++;
 		}
@@ -55,10 +54,10 @@ int check_allowed_char(char **line)
 	return (1);
 }
 
-char **delete_backslash(char **line)
+char	**delete_backslash(char **line)
 {
-	int i;
-	int n;
+	int	i;
+	int	n;
 
 	i = 0;
 	n = ft_strlen(line[0]);
@@ -71,14 +70,12 @@ char **delete_backslash(char **line)
 	return (line);
 }
 
-int check_map_equal(char **line)
+int	check_map_equal(char **line)
 {
-	int i;
-	int j;
-	int n;
+	int	i;
+	int	n;
 
 	i = 0;
-	j = 0;
 	n = ft_strlen(line[0]);
 	while (line[i])
 	{
@@ -92,9 +89,9 @@ int check_map_equal(char **line)
 	return (1);
 }
 
-int check_map_valid(char **line)
+int	check_map_valid(char **line)
 {
-	t_st b;
+	t_st	b;
 
 	b.i = 0;
 	b.j = 0;

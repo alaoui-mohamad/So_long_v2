@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 00:30:47 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 20:07:13 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 21:43:37 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_hieght(char **av)
 	int		height;
 	int		fd;
 	char	*line;
-	int 	len;
+	int		len;
 
 	height = 0;
 	len = 0;

@@ -6,12 +6,11 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:31:39 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 04:09:10 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 22:31:21 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
 
 void	print_error(t_st *b, char *str)
 {

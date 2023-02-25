@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 04:08:53 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 18:46:48 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/25 22:32:27 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int	check_e_isblocked(char *line, int n)
 	{
 		if (line[i] == 'E')
 		{
-			if (line[i - 1] != 'P' && line[i + 1] != 'P' &&
-				line[i - n] != 'P' && line[i + n] != 'P')
+			if (line[i - 1] != 'P' && line[i + 1] != 'P'
+				&& line[i - n] != 'P' && line[i + n] != 'P')
 			{
 				free(line);
 				print_simple_error("Error map not valid (exit is blocked) \n");

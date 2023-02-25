@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 21:49:03 by m-alaoui          #+#    #+#             */
+/*   Updated: 2023/02/25 21:49:06 by m-alaoui         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "so_long.h"
 
@@ -16,9 +27,7 @@ int	draw_map(char **map, int coins)
 	draw_files(&b);
 	mlx_hook(b.win, 2, 0, read_key, &b);
 	mlx_hook(b.win, 17, 0, destory, &b);
-
 	mlx_loop(b.mlx);
-
 	return (0);
 }
 
@@ -49,7 +58,7 @@ char	*double_pointer_to_char(char **line)
 	return (str);
 }
 
-void check_map(t_st *b)
+void	check_map(t_st *b)
 {
 	b->width = ft_strlen(b->arr[0]);
 	b->height = ft_count_colums(b->arr);
@@ -62,11 +71,11 @@ void check_map(t_st *b)
 	check_map_rectangular(b->arr);
 }
 
-char **parser_map(int ac, char **av)
+char	**parser_map(int ac, char **av)
 {
-	t_st b;
-	int len;
-	int i = 0;
+	t_st	b;
+	int		len;
+
 	if (ac != 2)
 		print_simple_error("Error : Wrong number of arguments \n");
 	b.arr = read_map(av);
@@ -88,6 +97,5 @@ int	main(int argc, char **argv)
 	map = parser_map(argc, argv);
 	count_c = count_collec(map);
 	draw_map(map, count_c);
-
 	return (0);
 }
