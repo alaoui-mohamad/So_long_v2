@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:31:39 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 04:53:26 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:28:12 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,13 @@ void	free_map(char **map)
 		i++;
 	}
 	free(map);
+}
+
+void	draw_score(t_st *b)
+{
+	mlx_string_put(b->mlx, b->win, SQUARE / 6, SQUARE / 6,
+		0x7c2222, "Score : ");
+	b->count_m_c = ft_itoa(b->count_m);
+	mlx_string_put(b->mlx, b->win, SQUARE * 3,
+		(SQUARE / 6), 0x7c2222, b->count_m_c);
 }

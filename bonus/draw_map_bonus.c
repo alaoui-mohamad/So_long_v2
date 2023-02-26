@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:39:00 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 04:25:57 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:01:09 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	read_files(t_st *b)
 									&b->height);
 	b->player = mlx_xpm_file_to_image(b->mlx, "assets/player.xpm", &b->width, \
 									&b->height);
+	b->enemy = mlx_xpm_file_to_image(b->mlx, "assets/enemy.xpm", &b->width, \
+									&b->height);
 }
 
 void	drow_player_exit(t_st *b)
@@ -77,6 +79,13 @@ void	drow_player_exit(t_st *b)
 		mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, \
 								SQUARE * b->i);
 		mlx_put_image_to_window(b->mlx, b->win, b->player, SQUARE * b->j, \
+								SQUARE * b->i);
+	}
+	if (b->arr[b->i][b->j] == 'G')
+	{
+		mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, \
+								SQUARE * b->i);
+		mlx_put_image_to_window(b->mlx, b->win, b->enemy, SQUARE * b->j, \
 								SQUARE * b->i);
 	}
 }
@@ -107,4 +116,5 @@ void	draw_files(t_st *b)
 		}
 		b->i++;
 	}
+	draw_score(b);
 }

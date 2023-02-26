@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 22:25:28 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 16:03:03 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:26:43 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct l_st
 	void	*col;
 	void	*wall;
 	void	*player;
+	void	*enemy;
 	int		coins;
 	int		start;
 	int		end;
@@ -41,6 +42,7 @@ typedef struct l_st
 	int		width;
 	int		height;
 	int		count_m;
+	char	*count_m_c;
 	char	**arr;
 	char	*line;
 	int		player_position;
@@ -50,6 +52,7 @@ typedef struct l_st
 
 // read map
 int		ft_strlen(const char *s);
+char	*ft_itoa(int n);
 char	*ft_strrchr(const char *s, int c);
 void	ft_putstr_fd(char *s, int fd);
 int		read_file(char *path);
@@ -91,5 +94,6 @@ void	free_map(char **map);
 void	ft_putnbr_fd(int nb, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	check_line_backslach(char *line);
+void	draw_score(t_st *b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 00:30:47 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 16:02:17 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:05:24 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,11 @@ void	complet_move_player(t_st *b, int x, int y)
 {
 	if (b->arr[b->i + y][b->j + x] == 'E' && b->coins == 0)
 	{
-		ft_putstr_fd("You win!", 1);
-		exit(0);
+		print_error(b, "You win!\n");
+	}
+	if (b->arr[b->i + y][b->j + x] == 'G')
+	{
+		print_error(b, "You Lost! \n");
 	}
 	if (b->arr[b->i + y][b->j + x] == '1' || b->arr[b->i + y][b->j + x] == 'E')
 		return ;
@@ -79,8 +82,5 @@ void	complet_move_player(t_st *b, int x, int y)
 	b->arr[b->i][b->j] = '0';
 	b->arr[b->i + y][b->j + x] = 'P';
 	b->count_m++;
-	ft_putstr_fd("Moves: ", 1);
-	ft_putnbr_fd(b->count_m, 1);
-	write(1, "\n", 1);
 	return ;
 }

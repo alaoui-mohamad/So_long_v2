@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 04:09:17 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 04:26:22 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:29:57 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	check_allowed_char(char **line)
 		while (j < n - 1)
 		{
 			if (line[i][j] != '1' && line[i][j] != '0' && line[i][j] != 'C' &&
-				line[i][j] != 'E' && line[i][j] != 'P' && line[i][j] != '\n')
+				line[i][j] != 'E' && line[i][j] != 'P' && line[i][j] != '\n'
+				&& line[i][j] != 'G')
 			{
 				free(line);
 				print_simple_error("Error (not allowed char) \n");

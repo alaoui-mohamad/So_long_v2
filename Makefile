@@ -19,6 +19,7 @@ BFILES  = get_next_line/get_next_line_bonus \
 		bonus/parser/valid_path_bonus \
 		bonus/parser/libft_import_bonus \
 		bonus/parser/logs_bonus \
+		bonus/parser/ft_itoa \
 		bonus/read_map/read_map_for_parser_bonus \
 		bonus/draw_map_bonus \
 		bonus/so_long_bonus 
