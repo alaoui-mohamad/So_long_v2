@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 00:30:47 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 16:04:28 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 23:15:27 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_hieght(char **av)
 	len = 0;
 	fd = read_file(av[1]);
 	line = get_next_line(fd);
-	if (line == NULL)
+	if (line == NULL || line[0] == '\n')
 		print_simple_error("Error \n");
 	while (line)
 	{

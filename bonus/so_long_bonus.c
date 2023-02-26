@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:49:03 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 04:25:51 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 20:01:04 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ char	**parser_map(int ac, char **av)
 	b.line = double_pointer_to_char(b.arr);
 	check_map(&b);
 	b.line = check_path_valid(b.line, player_position(b.arr), len);
+	b.line = loop_map_check_c(b.line, len);
+	printf("line = %s \n", b.line);
 	check_path(b.line);
 	check_e_isblocked(b.line, len);
 	return (b.arr);
