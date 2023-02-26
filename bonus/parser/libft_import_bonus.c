@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_import.c                                     :+:      :+:    :+:   */
+/*   libft_import_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 00:30:47 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 16:04:28 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:02:17 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
@@ -38,7 +38,7 @@ void	ft_putnbr_fd(int nb, int fd)
 
 int	destory(t_st *b)
 {
-	print_error(b, "window is closed \n");
+	print_error(b, "window is closed !\n");
 	exit(0);
 	return (0);
 }

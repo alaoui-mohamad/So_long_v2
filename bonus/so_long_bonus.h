@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 22:25:28 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 04:53:37 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:03:03 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <fcntl.h>
 # include <stdlib.h>
@@ -19,7 +19,7 @@
 # include <limits.h>
 # include <stdio.h>
 # include "mlx.h"
-# include "get_next_line/get_next_line_bonus.h"
+# include "../get_next_line/get_next_line_bonus.h"
 
 # define SQUARE 32
 

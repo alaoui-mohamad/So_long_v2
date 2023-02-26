@@ -6,13 +6,13 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:53:25 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 22:30:58 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 04:52:52 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
 	int	i;
 

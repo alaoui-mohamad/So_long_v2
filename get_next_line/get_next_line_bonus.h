@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:53:28 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 22:29:59 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/26 04:52:39 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # endif
 
 char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *s);
+int 	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_strcat(char *dest, const char *src);
 char	*ft_strjoin(char *left_str, char *buff);
