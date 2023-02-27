@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 04:08:53 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 04:26:18 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/27 03:48:58 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,29 +50,6 @@ int	check_map_rectangular(char **line)
 	{
 		free_map(line);
 		print_simple_error("Error : map not valid (not rectangular) \n");
-	}
-	return (1);
-}
-
-int	check_e_isblocked(char *line, int n)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (line[i])
-	{
-		if (line[i] == 'E')
-		{
-			if (line[i - 1] != 'P' && line[i + 1] != 'P'
-				&& line[i - n] != 'P' && line[i + n] != 'P')
-			{
-				free(line);
-				print_simple_error("Error map not valid (exit is blocked) \n");
-			}
-		}
-		i++;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 22:25:28 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 22:25:24 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/27 03:49:40 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int		check_map_equal(char **line);
 int		check_map_valid(char **line);
 void	check_heads(char *line);
 char	*get_next_line(int fd);
-int		check_e_isblocked(char *line, int n);
 // draw map
 int		read_key(int keycode, t_st *b);
 void	read_files(t_st *b);
@@ -91,7 +90,5 @@ void	free_map(char **map);
 void	ft_putnbr_fd(int nb, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	check_line_backslach(char *line);
-char	*check_c_isblocked(char *line, int position, int n);
-char	*loop_map_check_c(char *line, int n);
 
 #endif

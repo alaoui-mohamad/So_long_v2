@@ -9,7 +9,6 @@ FILES=  get_next_line/get_next_line_bonus \
 		parser/valid_path \
 		parser/libft_import \
 		parser/logs \
-		parser/valid_path_v2 \
 		read_map/read_map_for_parser \
 		draw_map \
 		so_long 

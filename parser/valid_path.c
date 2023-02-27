@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:23:34 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 17:02:35 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:03:05 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,16 @@ int	player_position(char **line)
 
 char	*check_path_valid(char *line, int position, int n)
 {
-	if (line[position] == '1' || line[position] == 'E')
-		return (0);
-	line[position] = 'P';
-	if (line[position - n - 1] == '0' || line[position - n - 1] == 'C')
+	if (line[position] == 'E')
+		line[position] = 'K';
+	if (line[position] == '0' || line[position] == 'C' || line[position] == 'P')
+	{
+		line[position] = 'K';
 		check_path_valid(line, position - n, n);
-	if (line[position - 1] == '0' || line[position - 1] == 'C')
 		check_path_valid(line, position - 1, n);
-	if (line[position + 1] == '0' || line[position + 1] == 'C')
 		check_path_valid(line, position + 1, n);
-	if (line[position + n - 1] == '0' || line[position + n - 1] == 'C')
 		check_path_valid(line, position + n, n);
+	}
 	return (line);
 }
 
@@ -83,7 +82,7 @@ int	check_path(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == 'C')
+		if (line[i] == 'C' || line[i] == 'E')
 		{
 			free(line);
 			print_simple_error("Error : can't collect all the coins");

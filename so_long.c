@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:49:03 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 20:26:00 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/27 03:47:25 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,8 @@ char	**parser_map(int ac, char **av)
 	b.arr = delete_backslash(b.arr);
 	b.line = double_pointer_to_char(b.arr);
 	check_map(&b);
-	b.line = check_path_valid(b.line, player_position(b.arr), len);
-	b.line = loop_map_check_c(b.line, len);
+	b.line = check_path_valid(b.line, player_position(b.arr), len - 1);
 	check_path(b.line);
-	check_e_isblocked(b.line, len);
 	return (b.arr);
 }
 
