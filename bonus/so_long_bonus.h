@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 22:25:28 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/27 03:48:39 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:19:37 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct l_st
 	void	*wall;
 	void	*player;
 	void	*enemy;
+	void	*door_open;
 	int		coins;
 	int		start;
 	int		end;
@@ -70,6 +71,7 @@ int		check_path(char *line);
 char	*double_pointer_to_char(char **line);
 int		player_position(char **line);
 int		destory(t_st *b);
+// void 	draw_door(t_st *b);
 // check map if is valid
 int		check_allowed_char(char **line);
 char	**delete_backslash(char **line);

@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:39:00 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 18:01:09 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:33:05 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	read_files(t_st *b)
 									&b->height);
 	b->enemy = mlx_xpm_file_to_image(b->mlx, "assets/enemy.xpm", &b->width, \
 									&b->height);
+	b->door_open = mlx_xpm_file_to_image(b->mlx, "assets/exit_open.xpm", \
+									&b->width, &b->height);
 }
 
 void	drow_player_exit(t_st *b)
@@ -71,8 +73,12 @@ void	drow_player_exit(t_st *b)
 	{
 		mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, \
 								SQUARE * b->i);
+		if (b->coins != 0)
 		mlx_put_image_to_window(b->mlx, b->win, b->exit, SQUARE * b->j, \
 								SQUARE * b->i);
+		else
+			mlx_put_image_to_window(b->mlx, b->win, b->door_open, \
+									SQUARE * b->j, SQUARE * b->i);
 	}
 	if (b->arr[b->i][b->j] == 'P')
 	{
