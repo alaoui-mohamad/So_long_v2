@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:39:00 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/27 16:33:05 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/03/10 00:03:42 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	drow_player_exit(t_st *b)
 		mlx_put_image_to_window(b->mlx, b->win, b->empty, SQUARE * b->j, \
 								SQUARE * b->i);
 		if (b->coins != 0)
-		mlx_put_image_to_window(b->mlx, b->win, b->exit, SQUARE * b->j, \
+			mlx_put_image_to_window(b->mlx, b->win, b->exit, SQUARE * b->j, \
 								SQUARE * b->i);
 		else
 			mlx_put_image_to_window(b->mlx, b->win, b->door_open, \
