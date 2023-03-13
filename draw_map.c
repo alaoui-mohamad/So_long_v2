@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:39:00 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/25 21:47:03 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/03/12 22:52:47 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	read_files(t_st *b)
 									&b->height);
 	b->player = mlx_xpm_file_to_image(b->mlx, "assets/player.xpm", &b->width, \
 									&b->height);
+	protect_malloc(b);
 }
 
 void	drow_player_exit(t_st *b)

@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 22:25:28 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/27 16:19:37 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/03/12 22:58:38 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int		check_path(char *line);
 char	*double_pointer_to_char(char **line);
 int		player_position(char **line);
 int		destory(t_st *b);
-// void 	draw_door(t_st *b);
 // check map if is valid
 int		check_allowed_char(char **line);
 char	**delete_backslash(char **line);
@@ -86,8 +85,8 @@ int		draw_map(char **map, int coins);
 void	move_player(t_st *b, int x, int y);
 void	drow_player_exit(t_st *b);
 void	draw_files(t_st *b);
+void	protect_malloc(t_st *b);
 int		count_collec(char **map);
-//logs
 void	print_error(t_st *b, char *str);
 void	print_simple_error(char *str);
 void	free_window(t_st *b);

@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 22:25:28 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/27 03:49:40 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/03/12 22:51:39 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	print_error(t_st *b, char *str);
 void	print_simple_error(char *str);
 void	free_window(t_st *b);
 void	free_map(char **map);
+void	protect_malloc(t_st *b);
 void	ft_putnbr_fd(int nb, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	check_line_backslach(char *line);

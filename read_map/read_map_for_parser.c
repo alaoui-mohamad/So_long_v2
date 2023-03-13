@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:24:52 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/26 23:16:45 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/03/12 22:39:12 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ int	read_file(char *path)
 	int		fd;
 
 	extension = ft_strrchr(path, '.');
-	if (extension == 0 || ft_strncmp(".ber", extension, ft_strlen(extension)))
+	if (extension == 0 || ft_strncmp(".ber", extension, ft_strlen(extension))
+		|| ft_strlen(extension) != 4)
 	{
-		ft_putstr_fd("Error", 2);
+		print_simple_error("Error");
 	}
 	fd = open(path, O_RDONLY | O_NOFOLLOW);
 	return (fd);

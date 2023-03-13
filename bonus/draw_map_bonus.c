@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:39:00 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/03/10 00:03:42 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/03/12 22:55:35 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	read_files(t_st *b)
 									&b->height);
 	b->door_open = mlx_xpm_file_to_image(b->mlx, "assets/exit_open.xpm", \
 									&b->width, &b->height);
+	protect_malloc(b);
 }
 
 void	drow_player_exit(t_st *b)

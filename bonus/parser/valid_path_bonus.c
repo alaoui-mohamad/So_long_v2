@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:23:34 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/27 16:03:26 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/03/13 00:37:34 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,13 @@ int	check_path(char *line)
 		i++;
 	}
 	return (1);
+}
+
+void	protect_malloc(t_st *b)
+{
+	if (b->exit == NULL || b->empty == NULL || b->col == NULL
+		|| b->wall == NULL || b->player == NULL)
+	{
+		print_simple_error("Error");
+	}
 }

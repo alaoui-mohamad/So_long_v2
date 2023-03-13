@@ -6,7 +6,7 @@
 /*   By: m-alaoui <m-alaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 04:08:53 by m-alaoui          #+#    #+#             */
-/*   Updated: 2023/02/27 03:49:04 by m-alaoui         ###   ########.fr       */
+/*   Updated: 2023/03/11 23:39:14 by m-alaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	check_wall_map(char **line)
 	b.height = ft_count_colums(line);
 	while (line[b.i])
 	{
-		if (b.i == 0 && b.i == b.height - 1)
+		if (b.i == 0 || b.i == b.height - 1)
 		{
 			check_heads(line[b.i]);
 		}
